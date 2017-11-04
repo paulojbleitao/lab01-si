@@ -1,4 +1,3 @@
-const app = angular.module('jukeboxApp', []);
 app.controller('cadastraArtistaCtrl', function () {
     this.artistas = [];
 

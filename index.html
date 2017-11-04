@@ -2,41 +2,27 @@
     <head>
         <title>Jukebox</title>
         <meta charset="UTF-8">
-        <link rel="stylesheet" type="text/css" href="./bootstrap/dist/css/bootstrap.css"></link>
-        <link rel="stylesheet" type="text/css" href="./app.css"></link>
-        <script src="./angular.min.js"></script>
-        <script src="./index.js"></script>
+
+        <!-- importando styles -->
+        <link rel="stylesheet" type="text/css" href="./assets/css/app.css"></link>
+
+        <!-- importando bibliotecas -->
+        <script src="./node_modules/angular/angular.min.js"></script>
+        <script src="./node_modules/@uirouter/angularjs/release/angular-ui-router.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="./node_modules/bootstrap/dist/css/bootstrap.css"></link>
+
+        <!-- configurações do module -->
+        <script src="./app/app.js"></script>
+
+        <!-- importando controllers -->
+        <script src="./app/controllers/artistaCtrl.js"></script>
+        <script src="./app/controllers/musicaCtrl.js"></script>
     </head>
-    <body ng-controller="cadastraArtistaCtrl as cadastraArtista">
-
-        {{cadastraArtista.artistas}}<br/>
-        {{cadastraArtista.artista}}<br/>
-
+    <body>
         <div class="content jumbotron">
             <h2>Juketop</h2>
 
-            <form ng-submit="cadastraArtista.salvaArtista(cadastraArtista.artista)">
-                <input 
-                    class="form-control"
-                    placeholder="Nome do artista"
-                    type="text"
-                    ng-required="true"
-                    ng-model="cadastraArtista.artista.nome">
-                </input>
-
-                <input
-                    class="form-control"
-                    placeholder="Link da foto do artista"
-                    type="text"
-                    ng-model="cadastraArtista.artista.linkFoto">
-                </input>
-                
-                <button class="btn btn-primary form-control" type="submit">Cadastrar artista</button>
-            </form>
-
-            <div class="alert alert-danger" ng-show="cadastraArtista.valida()">
-                O artista já existe no sistema.    
-            </div>
+            <ui-view></ui-view>
         </div>
     </body>
 </html>
