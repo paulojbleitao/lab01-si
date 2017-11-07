@@ -5,7 +5,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
     let home = {
         name: "home",
         url: "/",
-        templateUrl: "../templates/artista.html",
+        templateUrl: "templates/artista.html",
         controller: "cadastraArtistaCtrl",
         controllerAs: "cadastraArtista"
     };
@@ -13,7 +13,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
     let musica = {
         name: "musica",
         url: "/musica",
-        templateUrl: "../templates/musica.html",
+        templateUrl: "templates/musica.html",
         controller: "cadastraMusicaCtrl",
         controllerAs: "cadastraMusica"
     }
