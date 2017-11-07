@@ -1,0 +1,13 @@
+{
+  "name": "lab01",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/paulojbleitao/lab01-si.git",
+  "author": "Paulo Leitao <paulojbleitao@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@uirouter/angularjs": "^1.0.10",
+    "angular": "^1.6.6",
+    "bootstrap": "4.0.0-beta.2"
+  }
+}
