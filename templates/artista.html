@@ -1,0 +1,28 @@
+{{cadastraArtista.artistas}}<br/>
+{{cadastraArtista.artista}}<br/>
+
+<h3>Cadastro de artista</h3>
+<form ng-submit="cadastraArtista.salvaArtista(cadastraArtista.artista)">
+    <input 
+        class="form-control"
+        placeholder="Nome do artista"
+        type="text"
+        ng-required="true"
+        ng-model="cadastraArtista.artista.nome">
+    </input>
+
+    <input
+        class="form-control"
+        placeholder="Link da foto do artista"
+        type="text"
+        ng-model="cadastraArtista.artista.linkFoto">
+    </input>
+    
+    <button class="btn btn-primary form-control" type="submit">Cadastrar artista</button>
+</form>
+
+<div class="alert alert-danger" ng-show="cadastraArtista.valida()">
+    O artista já existe no sistema.    
+</div>
+
+<a ui-sref="musica">Musica</a>

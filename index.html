@@ -1,0 +1,28 @@
+<html ng-app="jukeboxApp">
+    <head>
+        <title>Jukebox</title>
+        <meta charset="UTF-8">
+
+        <!-- importando styles -->
+        <link rel="stylesheet" type="text/css" href="./assets/css/app.css"></link>
+
+        <!-- importando bibliotecas -->
+        <script src="./node_modules/angular/angular.min.js"></script>
+        <script src="./node_modules/@uirouter/angularjs/release/angular-ui-router.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="./node_modules/bootstrap/dist/css/bootstrap.css"></link>
+
+        <!-- configurações do module -->
+        <script src="./app/app.js"></script>
+
+        <!-- importando controllers -->
+        <script src="./app/controllers/artistaCtrl.js"></script>
+        <script src="./app/controllers/musicaCtrl.js"></script>
+    </head>
+    <body>
+        <div class="content jumbotron">
+            <h2>Juketop</h2>
+
+            <ui-view></ui-view>
+        </div>
+    </body>
+</html>
