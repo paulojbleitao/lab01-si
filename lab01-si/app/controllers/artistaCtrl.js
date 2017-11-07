@@ -1,15 +1,10 @@
-app.controller('cadastraArtistaCtrl', function () {
-    this.artistas = [];
+app.controller('cadastraArtistaCtrl', function (ArtistaService) {
+    this.artistas = ArtistaService.artistas;
 
     let existe = false;
 
     this.salvaArtista = (artista) => {
-        let nomeIgual = (elem) => {
-            return elem.nome === artista.nome;
-        }
-
-        if (!this.artistas.find(nomeIgual)) {
-            this.artistas.push(artista);
+        if (ArtistaService.salvaArtista(artista)) {
             delete this.artista;
             existe = false;
         } else {
