@@ -1,11 +1,18 @@
-app.controller('cadastraMusicaCtrl', function() {
-    this.musicas = [];
+app.controller('cadastraMusicaCtrl', function(MusicaService) {
+    // falta mensagem de confirmaçao
+    this.albuns = MusicaService.albuns;
+    let existe = false;
 
     this.salvaMusica = (musica) => {
-        this.musicas.push(musica);
-        delete this.musica;
+        if (MusicaService.salvaMusica(musica)) {
+            delete this.musica;
+            existe = false;
+        } else {
+            existe = true;
+        }
     }
 
-    // logica de album
-    // blabla
+    this.valida = () => {
+        return existe;
+    }
 });

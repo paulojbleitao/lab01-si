@@ -8,7 +8,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
         templateUrl: "templates/artista.html",
         controller: "cadastraArtistaCtrl",
         controllerAs: "cadastraArtista"
-    };
+    }
 
     let musica = {
         name: "musica",
@@ -18,6 +18,15 @@ app.config(function($stateProvider, $urlRouterProvider) {
         controllerAs: "cadastraMusica"
     }
 
+    let perfil = {
+        name: "perfil",
+        url: "/perfil/{nome}",
+        templateUrl: "templates/perfil.html",
+        controller: "perfilCtrl",
+        controllerAs: "perfilCtrl"
+    }
+
     $stateProvider.state(home);
     $stateProvider.state(musica);
+    $stateProvider.state(perfil);
 });

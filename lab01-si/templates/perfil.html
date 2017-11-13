@@ -1,0 +1,63 @@
+<h3>Perfilzão top</h3>
+{{perfilCtrl.inicializar()}}
+<h5>{{perfilCtrl.artista.nome}}</h5><br/>
+
+<div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Álbum</th>
+                <th scope="col" style="text-align:right">Ano</th>
+            </tr>
+        </thead>
+        <tbody ng-repeat="album in perfilCtrl.albuns |
+               orderBy: 'musicas[0].ano'">
+            <tr data-toggle="collapse"
+                data-target="#{{$index}}"
+                aria-expanded="false"
+                aria-controls="{{$index}}">
+                <td>{{album.nome}}</td>
+                <td style="text-align:right">{{album.musicas[0].ano}}</td>
+            </tr>
+            <td class="collapse row" id="{{$index}}" style="padding: 0;">
+                <table class="table table-sm">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Música</th>
+                            <th scope="col">Duração</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="musica in album.musicas | 
+                            orderBy: 'nome'">
+                            <th scope="row">{{$index + 1}}</th>
+                            <td>{{musica.nome}}</td>
+                            <td>{{musica.duracao}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tbody>
+    </table>
+</div>
+
+<!-- <div id="accordion" role="tablist">
+<div ng-repeat="album in perfilCtrl.albuns">
+  <div class="card">
+    <div class="card-header" role="tab" id="headingOne">
+      <h5 class="mb-0">
+        <a data-toggle="collapse" data-target="#{{$index}}" aria-expanded="false" aria-controls="{{$index}}">
+          {{album.nome}}
+        </a>
+      </h5>
+    </div>
+
+    <div id="{{$index}}" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+      <div class="card-body">
+        {{album.musicas[0].nome}}
+      </div>
+    </div>
+  </div>
+</div> 
+</div> -->

@@ -14,6 +14,16 @@
     margin-bottom: 20px;
 }
 
+.content h5 {
+    text-align: center;
+}
+
 .content input {
     margin-bottom: 10px;
+}
+
+.table.table-sm {
+    margin-left: 8%;
+    margin-right: 8%;
+    text-align: right;
 }

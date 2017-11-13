@@ -1,4 +1,4 @@
-{{cadastraMusica.musicas}}<br/>
+{{cadastraMusica.albuns}}<br/>
 {{cadastraMusica.musica}}<br/>
 
 
@@ -46,5 +46,9 @@
 
     <button class="btn btn-primary form-control" type="submit">Adicionar música</button>
 </form>
+
+<div class="alert alert-danger" ng-show="cadastraMusica.valida()">
+    A música já existe no álbum.  
+</div>
 
 <a ui-sref="home">Artista</a>

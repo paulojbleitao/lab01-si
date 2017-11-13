@@ -1,5 +1,5 @@
-{{cadastraArtista.artistas}}<br/>
-{{cadastraArtista.artista}}<br/>
+<!-- {{cadastraArtista.artistas}}<br/>
+{{cadastraArtista.artista}}<br/> -->
 
 <h3>Cadastro de artista</h3>
 <form ng-submit="cadastraArtista.salvaArtista(cadastraArtista.artista)">
@@ -19,10 +19,43 @@
     </input>
     
     <button class="btn btn-primary form-control" type="submit">Cadastrar artista</button>
-</form>
+</form><br/>
 
 <div class="alert alert-danger" ng-show="cadastraArtista.valida()">
     O artista já existe no sistema.    
 </div>
+
+<h3>Pesquisa de artista</h3>
+<form ng-submit="cadastraArtista.pesquisa()">
+    <input
+        class="form-control"
+        placeholder="Nome do artista"
+        type="text"
+        ng-model="cadastraArtista.nomePesquisado">
+    </input>
+    
+    <button class="btn btn-primary form-control" type="submit">Pesquisar artista</button>
+</form>
+
+<div ng-show="cadastraArtista.pesquisado()">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="artista in cadastraArtista.artistas | 
+                filter:cadastraArtista.nomePesquisado | 
+                orderBy: 'nome'" 
+                ng-click="cadastraArtista.go(artista.nome)">
+                <th scope="row">{{$index + 1}}</th>
+                <td>{{artista.nome}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
 
 <a ui-sref="musica">Musica</a>
