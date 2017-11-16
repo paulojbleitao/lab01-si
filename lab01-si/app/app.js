@@ -1,4 +1,4 @@
-const app = angular.module('jukeboxApp', ['ui.router']);
+const app = angular.module('jukeboxApp', ['ui.router', 'star-rating']);
 app.config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/');
 

@@ -28,7 +28,25 @@ app.controller('perfilCtrl', function(ArtistaService, MusicaService, $stateParam
         recuperaAlbuns();
     }
 
-    this.collapse = () => {
-        console.log("rs");
+    this.atualizaNota = ($event) => {
+        this.artista.nota = $event.rating;
     }
+
+    this.salvaUltima = (musica) => {
+        this.artista.ultimaMusica = musica;
+    }
+
+    this.adicionaFavorito = () => {
+        ArtistaService.adicionaFavorito(this.artista);
+    }
+
+    this.removeFavorito = () => {
+        ArtistaService.removeFavorito(this.artista);
+    }
+
+    this.favorito = () => {
+        return this.artista.favorito;
+    }
+
+    this.inicializar();
 });

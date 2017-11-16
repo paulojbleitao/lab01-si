@@ -1,5 +1,6 @@
 app.controller('cadastraArtistaCtrl', function (ArtistaService, $state) {
     this.artistas = ArtistaService.artistas;
+    this.favoritos = ArtistaService.favoritos;
     let existe = false;
     let pesquisado = false;
 
@@ -26,5 +27,13 @@ app.controller('cadastraArtistaCtrl', function (ArtistaService, $state) {
 
     this.pesquisado = () => {
         return pesquisado;
+    }
+
+    this.removeFavorito = (artista) => {
+        ArtistaService.removeFavorito(artista);
+    }
+
+    this.existemFavoritos = () => {
+        return this.favoritos.length !== 0;
     }
 } );

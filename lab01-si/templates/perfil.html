@@ -1,6 +1,27 @@
 <h3>Perfilzão top</h3>
-{{perfilCtrl.inicializar()}}
-<h5>{{perfilCtrl.artista.nome}}</h5><br/>
+
+<img ng-src="{{perfilCtrl.artista.linkFoto}}"
+     width="100px"
+     class="rounded-circle avatar">
+</img>
+<h5>{{perfilCtrl.artista.nome}} 
+    <i class="material-icons favicon"
+       ng-hide="perfilCtrl.favorito()"
+       ng-click="perfilCtrl.adicionaFavorito()">favorite_border</i>
+    <i class="material-icons favicon"
+       ng-show="perfilCtrl.favorito()"
+       ng-click="perfilCtrl.removeFavorito()">favorite</i>
+</h5>
+
+<star-rating-comp 
+    rating="perfilCtrl.artista.nota"
+    class="estrelas"
+    show-half-stars="true"
+    static-color="'ok'"
+    on-click="perfilCtrl.atualizaNota($event)">
+</star-rating-comp>
+
+<h6>{{perfilCtrl.artista.ultimaMusica ? "Última música ouvida: " + perfilCtrl.artista.ultimaMusica.nome : "Nenhuma música deste artista foi ouvida ainda."}}</h6>
 
 <div>
     <table class="table table-striped">
@@ -26,6 +47,7 @@
                             <th scope="col">#</th>
                             <th scope="col">Música</th>
                             <th scope="col">Duração</th>
+                            <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -34,6 +56,9 @@
                             <th scope="row">{{$index + 1}}</th>
                             <td>{{musica.nome}}</td>
                             <td>{{musica.duracao}}</td>
+                            <td><img ng-src="./assets/images/play.svg"
+                                     width="22px"
+                                     ng-click="perfilCtrl.salvaUltima(musica)"></img></td>
                         </tr>
                     </tbody>
                 </table>
@@ -41,23 +66,3 @@
         </tbody>
     </table>
 </div>
-
-<!-- <div id="accordion" role="tablist">
-<div ng-repeat="album in perfilCtrl.albuns">
-  <div class="card">
-    <div class="card-header" role="tab" id="headingOne">
-      <h5 class="mb-0">
-        <a data-toggle="collapse" data-target="#{{$index}}" aria-expanded="false" aria-controls="{{$index}}">
-          {{album.nome}}
-        </a>
-      </h5>
-    </div>
-
-    <div id="{{$index}}" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
-      <div class="card-body">
-        {{album.musicas[0].nome}}
-      </div>
-    </div>
-  </div>
-</div> 
-</div> -->
