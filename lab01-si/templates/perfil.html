@@ -1,68 +1,126 @@
-<h3>Perfilzão top</h3>
+<div class="row">
+    <div class="col">
+        <div class="content jumbotron">
+            <ng-include src="'templates/header.html'"></ng-include>
 
-<img ng-src="{{perfilCtrl.artista.linkFoto}}"
-     width="100px"
-     class="rounded-circle avatar">
-</img>
-<h5>{{perfilCtrl.artista.nome}} 
-    <i class="material-icons favicon"
-       ng-hide="perfilCtrl.favorito()"
-       ng-click="perfilCtrl.adicionaFavorito()">favorite_border</i>
-    <i class="material-icons favicon"
-       ng-show="perfilCtrl.favorito()"
-       ng-click="perfilCtrl.removeFavorito()">favorite</i>
-</h5>
+            <h3>Perfilzão top</h3>
 
-<star-rating-comp 
-    rating="perfilCtrl.artista.nota"
-    class="estrelas"
-    show-half-stars="true"
-    static-color="'ok'"
-    on-click="perfilCtrl.atualizaNota($event)">
-</star-rating-comp>
+            <img ng-src="{{perfilCtrl.artista.linkFoto}}"
+                width="100px"
+                class="rounded-circle avatar">
+            </img>
+            <h5>{{perfilCtrl.artista.nome}} 
+                <i class="material-icons favicon"
+                ng-hide="perfilCtrl.favorito()"
+                data-toggle="modal"
+                data-target="#confirmacaoFavorito">favorite_border</i>
+                <i class="material-icons favicon"
+                ng-show="perfilCtrl.favorito()"
+                data-toggle="modal"
+                data-target="#confirmacaoRemoverFavorito">favorite</i>
+            </h5>
 
-<h6>{{perfilCtrl.artista.ultimaMusica ? "Última música ouvida: " + perfilCtrl.artista.ultimaMusica.nome : "Nenhuma música deste artista foi ouvida ainda."}}</h6>
+            <div class="modal fade" tabindex="-1" role="dialog" id="confirmacaoFavorito">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Adicionar favorito</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Deseja adicionar o artista {{perfilCtrl.artista.nome}} aos favoritos?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" 
+                            ng-click="perfilCtrl.adicionaFavorito()"
+                            data-dismiss="modal">Sim</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-<div>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th scope="col">Álbum</th>
-                <th scope="col" style="text-align:right">Ano</th>
-            </tr>
-        </thead>
-        <tbody ng-repeat="album in perfilCtrl.albuns |
-               orderBy: 'musicas[0].ano'">
-            <tr data-toggle="collapse"
-                data-target="#{{$index}}"
-                aria-expanded="false"
-                aria-controls="{{$index}}">
-                <td>{{album.nome}}</td>
-                <td style="text-align:right">{{album.musicas[0].ano}}</td>
-            </tr>
-            <td class="collapse row" id="{{$index}}" style="padding: 0;">
-                <table class="table table-sm">
+            <div class="modal fade" tabindex="-1" role="dialog" id="confirmacaoRemoverFavorito">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Remover favorito</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Deseja remover o artista {{perfilCtrl.artista.nome}} dos favoritos?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" 
+                            ng-click="perfilCtrl.removeFavorito()"
+                            data-dismiss="modal">Sim</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <star-rating-comp 
+                rating="perfilCtrl.artista.nota"
+                class="estrelas"
+                show-half-stars="true"
+                static-color="'ok'"
+                on-click="perfilCtrl.atualizaNota($event)">
+            </star-rating-comp>
+
+            <h6>{{perfilCtrl.artista.ultimaMusica ? "Última música ouvida: " + perfilCtrl.artista.ultimaMusica.nome : "Nenhuma música deste artista foi ouvida ainda."}}</h6>
+
+            <div>
+                <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Música</th>
-                            <th scope="col">Duração</th>
-                            <th scope="col"></th>
+                            <th scope="col">Álbum</th>
+                            <th scope="col" style="text-align:right">Ano</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr ng-repeat="musica in album.musicas | 
-                            orderBy: 'nome'">
-                            <th scope="row">{{$index + 1}}</th>
-                            <td>{{musica.nome}}</td>
-                            <td>{{musica.duracao}}</td>
-                            <td><img ng-src="./assets/images/play.svg"
-                                     width="22px"
-                                     ng-click="perfilCtrl.salvaUltima(musica)"></img></td>
+                    <tbody ng-repeat="album in perfilCtrl.albuns |
+                        orderBy: 'musicas[0].ano'">
+                        <tr data-toggle="collapse"
+                            data-target="#{{$index}}"
+                            aria-expanded="false"
+                            aria-controls="{{$index}}">
+                            <td>{{album.nome}}</td>
+                            <td style="text-align:right">{{album.musicas[0].ano}}</td>
                         </tr>
+                        <td class="collapse row" id="{{$index}}" style="padding: 0;">
+                            <table class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col" style="text-align:center">Música</th>
+                                        <th scope="col">Duração</th>
+                                        <th scope="col"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="musica in album.musicas | 
+                                        orderBy: 'nome'">
+                                        <th scope="row">{{$index + 1}}</th>
+                                        <td style="text-align:center">{{musica.nome}}</td>
+                                        <td>{{musica.duracao}}</td>
+                                        <td><img ng-src="./assets/images/play.svg"
+                                                width="22px"
+                                                ng-click="perfilCtrl.salvaUltima(musica)"></img></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
                     </tbody>
                 </table>
-            </td>
-        </tbody>
-    </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="col">
+        <ng-include src="'templates/favoritos.html'"></ng-include>
+    </div>
 </div>

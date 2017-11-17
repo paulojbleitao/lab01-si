@@ -1,48 +1,60 @@
-<h3>Cadastro de música</h3>
-<form ng-submit="cadastraMusica.salvaMusica(cadastraMusica.musica)">
-    <input 
-        class="form-control" 
-        placeholder="Nome da música" 
-        type="text" 
-        ng-required="true"
-        ng-model="cadastraMusica.musica.nome">
-    </input>
+<div class="row">
+    <div class="col">
+        <div class="content jumbotron">
+            <ng-include src="'templates/header.html'"></ng-include>
 
-    <input
-        class="form-control" 
-        placeholder="Nome do artista" 
-        type="text" 
-        ng-required="true"
-        ng-model="cadastraMusica.musica.artista">
-    </input>
+            <h3>Cadastro de música</h3>
+            <form ng-submit="cadastraMusica.salvaMusica(cadastraMusica.musica)">
+                <input 
+                    class="form-control" 
+                    placeholder="Nome da música" 
+                    type="text" 
+                    ng-required="true"
+                    ng-model="cadastraMusica.musica.nome">
+                </input>
 
-    <input
-        class="form-control" 
-        placeholder="Nome do álbum" 
-        type="text" 
-        ng-required="true"
-        ng-model="cadastraMusica.musica.album">
-    </input>
+                <input
+                    class="form-control" 
+                    placeholder="Nome do artista" 
+                    type="text" 
+                    ng-required="true"
+                    ng-model="cadastraMusica.musica.artista">
+                </input>
 
-    <input
-        class="form-control" 
-        placeholder="Ano de lançamento" 
-        type="text" 
-        ng-required="true"
-        ng-model="cadastraMusica.musica.ano">
-    </input>
+                <input
+                    class="form-control" 
+                    placeholder="Nome do álbum" 
+                    type="text" 
+                    ng-required="true"
+                    ng-model="cadastraMusica.musica.album">
+                </input>
 
-    <input
-        class="form-control" 
-        placeholder="Duração" 
-        type="text" 
-        ng-required="true"
-        ng-model="cadastraMusica.musica.duracao">
-    </input>
+                <input
+                    class="form-control" 
+                    placeholder="Ano de lançamento" 
+                    type="text" 
+                    ng-required="true"
+                    ng-model="cadastraMusica.musica.ano">
+                </input>
 
-    <button class="btn btn-primary form-control" type="submit">Adicionar música</button>
-</form>
+                <input
+                    class="form-control" 
+                    placeholder="Duração" 
+                    type="text" 
+                    ng-required="true"
+                    ng-model="cadastraMusica.musica.duracao">
+                </input>
 
-<div class="alert alert-danger" ng-show="cadastraMusica.valida()">
-    A música já existe no álbum.  
+                <button class="btn btn-primary form-control" type="submit">Adicionar música</button>
+            </form>
+
+            <div class="alert alert-danger" ng-show="cadastraMusica.valida()">
+                A música já existe no álbum.  
+            </div>
+        </div>
+    </div>
+
+    <div class="col">
+        <ng-include src="'templates/favoritos.html'"></ng-include>
+    </div>
 </div>

@@ -31,74 +31,7 @@
     </head>
     <body>
         <div class="container">
-            <div class="row">
-                <div class="col">
-                    <div class="content jumbotron">
-                        <h2>Juketop</h2>
-                        
-                        <div class="text-center">
-                            <div class="btn-group" role="group">
-                                <button ui-sref="home" type="button" class="btn btn-secondary">Artista</button>
-                                <button ui-sref="musica" type="button" class="btn btn-secondary">Música</button>
-                                <button ui-sref="playlist" type="button" class="btn btn-secondary">Playlist</button>
-                            </div>
-                        </div><br/>
-                        
-                        <ui-view></ui-view>
-                    </div>
-                </div>
-                <div class="col" ng-controller="cadastraArtistaCtrl as artistaCtrl">
-                    <div class="jumbotron fav">
-                        <h2>Favoritos</h2>
-                        <h5>{{!artistaCtrl.existemFavoritos() ? "Não há nenhum artista favorito." : ""}}</h5>
-
-                        <div ng-show="artistaCtrl.existemFavoritos()">
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Nome</th>
-                                        <th scope="col" style="text-align:right"></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr ng-repeat="artista in artistaCtrl.favoritos | 
-                                        orderBy: 'nome'" 
-                                        ng-click="artistaCtrl.go(artista.nome)">
-                                        <th scope="row">{{$index + 1}}</th>
-                                        <td>{{artista.nome}}</td>
-                                        <td><i style="float:right"
-                                               class="material-icons"
-                                               ng-click="artistaCtrl.removeFavorito(artista)">close</i></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    
-                    <!-- <div ng-show="artistaCtrl.pesquisado()"> -->
-                        <div class="jumbotron busca">
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Nome</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr ng-repeat="artista in artistaCtrl.artistas | 
-                                        filter:artistaCtrl.nomePesquisado | 
-                                        orderBy: 'nome'" 
-                                        ng-click="artistaCtrl.go(artista.nome)">
-                                        <th scope="row">{{$index + 1}}</th>
-                                        <td>{{artista.nome}}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    <!-- </div> -->
-                </div>
-            </div>
+            <ui-view></ui-view>
         </div>
     </body>
 </html>

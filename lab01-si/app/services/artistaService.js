@@ -1,5 +1,5 @@
 app.service('ArtistaService', function () {
-    this.artistas = [{'nome': 'Arctic Monkeys', 'linkFoto': 'http://e-cdn-images.deezer.com/images/artist/9886f58e9ec2227a595afe3af923ec2f/200x200-000000-80-0-0.jpg'}, {'nome': 'Queens of The Stone Age'}];
+    this.artistas = [{'nome': 'Arctic Monkeys', 'linkFoto': 'http://e-cdn-images.deezer.com/images/artist/9886f58e9ec2227a595afe3af923ec2f/200x200-000000-80-0-0.jpg'}, {'nome': 'Queens of The Stone Age', 'linkFoto': 'http://www.northerntransmissions.com/wp-content/uploads/2016/10/zzzz4653555.jpg'}];
     this.favoritos = [];
 
     this.salvaArtista = (artista) => {

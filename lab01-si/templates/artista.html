@@ -1,55 +1,70 @@
-<h3>Cadastro de artista</h3>
-<form ng-submit="cadastraArtista.salvaArtista(cadastraArtista.artista)">
-    <input 
-        class="form-control"
-        placeholder="Nome do artista"
-        type="text"
-        ng-required="true"
-        ng-model="cadastraArtista.artista.nome">
-    </input>
+<div class="row">
+    <div class="col">
+        <div class="content jumbotron">
+            <ng-include src="'templates/header.html'"></ng-include>
 
-    <input
-        class="form-control"
-        placeholder="Link da foto do artista"
-        type="text"
-        ng-model="cadastraArtista.artista.linkFoto">
-    </input>
-    
-    <button class="btn btn-primary form-control" type="submit">Cadastrar artista</button>
-</form><br/>
+            <h3>Cadastro de artista</h3>
+            <form ng-submit="cadastraArtista.salvaArtista(cadastraArtista.artista)">
+                <input 
+                    class="form-control"
+                    placeholder="Nome do artista"
+                    type="text"
+                    ng-required="true"
+                    ng-model="cadastraArtista.artista.nome">
+                </input>
 
-<div class="alert alert-danger" ng-show="cadastraArtista.valida()">
-    O artista já existe no sistema.    
-</div>
+                <input
+                    class="form-control"
+                    placeholder="Link da foto do artista"
+                    type="text"
+                    ng-model="cadastraArtista.artista.linkFoto">
+                </input>
+                
+                <button class="btn btn-primary form-control" type="submit">Cadastrar artista</button>
+            </form><br/>
 
-<h3>Pesquisa de artista</h3>
-<form ng-submit="cadastraArtista.pesquisa()">
-    <input
-        class="form-control"
-        placeholder="Nome do artista"
-        type="text"
-        ng-model="cadastraArtista.nomePesquisado">
-    </input>
-    
-    <button class="btn btn-primary form-control" type="submit">Pesquisar artista</button>
-</form>
+            <div class="alert alert-danger" ng-show="cadastraArtista.valida()">
+                O artista já existe no sistema.    
+            </div>
 
-<div ng-show="cadastraArtista.pesquisado()">
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Nome</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="artista in cadastraArtista.artistas | 
-                filter:cadastraArtista.nomePesquisado | 
-                orderBy: 'nome'" 
-                ng-click="cadastraArtista.go(artista.nome)">
-                <th scope="row">{{$index + 1}}</th>
-                <td>{{artista.nome}}</td>
-            </tr>
-        </tbody>
-    </table>
+            <h3>Pesquisa de artista</h3>
+            <form ng-submit="cadastraArtista.pesquisa()">
+                <input
+                    class="form-control"
+                    placeholder="Nome do artista"
+                    type="text"
+                    ng-model="cadastraArtista.nomePesquisado">
+                </input>
+                
+                <button class="btn btn-primary form-control" type="submit">Pesquisar artista</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="col">
+        <ng-include src="'templates/favoritos.html'"></ng-include>
+
+        <div ng-show="cadastraArtista.pesquisado()">
+                <div class="jumbotron busca">
+                    <h3>Resultado da pesquisa</h3>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Nome</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="artista in cadastraArtista.artistas | 
+                                filter:cadastraArtista.nomePesquisado | 
+                                orderBy: 'nome'" 
+                                ng-click="cadastraArtista.go(artista.nome)">
+                                <th scope="row">{{$index + 1}}</th>
+                                <td>{{artista.nome}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+    </div>
 </div>

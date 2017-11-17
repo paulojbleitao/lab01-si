@@ -66,5 +66,9 @@ img.avatar {
 
 .busca {
     height: 40%;
-    padding: 10px;
+}
+
+.busca h3 {
+    text-align: center;
+    margin-top: -15px;
 }
