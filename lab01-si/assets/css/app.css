@@ -72,3 +72,29 @@ img.avatar {
     text-align: center;
     margin-top: -15px;
 }
+
+.playlist {
+    height: 40%;
+}
+
+.playlist h3 {
+    text-align: center;
+    margin-top: -15px;
+}
+
+.playlist h5 {
+    text-align: center;
+}
+
+.alert.alert-primary {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.alert.alert-danger {
+    margin-top: 10px;
+}
+
+select.form-control {
+    margin-bottom: 10px;
+}

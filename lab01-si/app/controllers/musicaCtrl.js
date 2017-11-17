@@ -1,7 +1,7 @@
-app.controller('cadastraMusicaCtrl', function(MusicaService) {
-    // falta mensagem de confirmaçao
+app.controller('musicaCtrl', function(MusicaService) {
     this.albuns = MusicaService.albuns;
     let existe = false;
+    let confirmacao = false;
 
     this.salvaMusica = (musica) => {
         if (MusicaService.salvaMusica(musica)) {
@@ -15,4 +15,17 @@ app.controller('cadastraMusicaCtrl', function(MusicaService) {
     this.valida = () => {
         return existe;
     }
+
+    this.confirma = () => {
+        confirmacao = true;
+    }
+
+    this.desconfirma = () => {
+        confirmacao = false;
+    }
+
+    this.confirmacao = () => {
+        return confirmacao;
+    }
+
 });

@@ -6,16 +6,16 @@ app.config(function($stateProvider, $urlRouterProvider) {
         name: "home",
         url: "/",
         templateUrl: "templates/artista.html",
-        controller: "cadastraArtistaCtrl",
-        controllerAs: "cadastraArtista"
+        controller: "artistaCtrl",
+        controllerAs: "artistaCtrl"
     }
 
     let musica = {
         name: "musica",
         url: "/musica",
         templateUrl: "templates/musica.html",
-        controller: "cadastraMusicaCtrl",
-        controllerAs: "cadastraMusica"
+        controller: "musicaCtrl",
+        controllerAs: "musicaCtrl"
     }
 
     let perfil = {
@@ -26,7 +26,25 @@ app.config(function($stateProvider, $urlRouterProvider) {
         controllerAs: "perfilCtrl"
     }
 
+    let playlists = {
+        name: "playlists",
+        url: "/playlists",
+        templateUrl: "templates/playlists.html",
+        controller: "playlistCtrl",
+        controllerAs: "playlistCtrl"
+    }
+
+    let playlist = {
+        name: "playlist",
+        url: "/playlist/{nome}",
+        templateUrl: "templates/playlist.html",
+        controller: "playlistCtrl",
+        controllerAs: "playlistCtrl"
+    }
+
     $stateProvider.state(home);
     $stateProvider.state(musica);
     $stateProvider.state(perfil);
+    $stateProvider.state(playlists);
+    $stateProvider.state(playlist);
 });

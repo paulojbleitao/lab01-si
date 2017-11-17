@@ -1,4 +1,4 @@
-app.controller('cadastraArtistaCtrl', function (ArtistaService, $state) {
+app.controller('artistaCtrl', function (ArtistaService, $state) {
     this.artistas = ArtistaService.artistas;
     this.favoritos = ArtistaService.favoritos;
     let existe = false;

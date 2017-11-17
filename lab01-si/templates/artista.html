@@ -4,36 +4,36 @@
             <ng-include src="'templates/header.html'"></ng-include>
 
             <h3>Cadastro de artista</h3>
-            <form ng-submit="cadastraArtista.salvaArtista(cadastraArtista.artista)">
+            <form ng-submit="artistaCtrl.salvaArtista(artistaCtrl.artista)">
                 <input 
                     class="form-control"
                     placeholder="Nome do artista"
                     type="text"
                     ng-required="true"
-                    ng-model="cadastraArtista.artista.nome">
+                    ng-model="artistaCtrl.artista.nome">
                 </input>
 
                 <input
                     class="form-control"
                     placeholder="Link da foto do artista"
                     type="text"
-                    ng-model="cadastraArtista.artista.linkFoto">
+                    ng-model="artistaCtrl.artista.linkFoto">
                 </input>
                 
                 <button class="btn btn-primary form-control" type="submit">Cadastrar artista</button>
             </form><br/>
 
-            <div class="alert alert-danger" ng-show="cadastraArtista.valida()">
+            <div class="alert alert-danger" ng-show="artistaCtrl.valida()">
                 O artista já existe no sistema.    
             </div>
 
             <h3>Pesquisa de artista</h3>
-            <form ng-submit="cadastraArtista.pesquisa()">
+            <form ng-submit="artistaCtrl.pesquisa()">
                 <input
                     class="form-control"
                     placeholder="Nome do artista"
                     type="text"
-                    ng-model="cadastraArtista.nomePesquisado">
+                    ng-model="artistaCtrl.nomePesquisado">
                 </input>
                 
                 <button class="btn btn-primary form-control" type="submit">Pesquisar artista</button>
@@ -44,7 +44,7 @@
     <div class="col">
         <ng-include src="'templates/favoritos.html'"></ng-include>
 
-        <div ng-show="cadastraArtista.pesquisado()">
+        <div ng-show="artistaCtrl.pesquisado()">
                 <div class="jumbotron busca">
                     <h3>Resultado da pesquisa</h3>
                     <table class="table table-hover">
@@ -55,10 +55,10 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="artista in cadastraArtista.artistas | 
-                                filter:cadastraArtista.nomePesquisado | 
+                            <tr ng-repeat="artista in artistaCtrl.artistas | 
+                                filter:artistaCtrl.nomePesquisado | 
                                 orderBy: 'nome'" 
-                                ng-click="cadastraArtista.go(artista.nome)">
+                                ng-click="artistaCtrl.go(artista.nome)">
                                 <th scope="row">{{$index + 1}}</th>
                                 <td>{{artista.nome}}</td>
                             </tr>

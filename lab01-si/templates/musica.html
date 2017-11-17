@@ -4,13 +4,13 @@
             <ng-include src="'templates/header.html'"></ng-include>
 
             <h3>Cadastro de música</h3>
-            <form ng-submit="cadastraMusica.salvaMusica(cadastraMusica.musica)">
+            <form ng-submit="musicaCtrl.salvaMusica(musicaCtrl.musica)">
                 <input 
                     class="form-control" 
                     placeholder="Nome da música" 
                     type="text" 
                     ng-required="true"
-                    ng-model="cadastraMusica.musica.nome">
+                    ng-model="musicaCtrl.musica.nome">
                 </input>
 
                 <input
@@ -18,7 +18,7 @@
                     placeholder="Nome do artista" 
                     type="text" 
                     ng-required="true"
-                    ng-model="cadastraMusica.musica.artista">
+                    ng-model="musicaCtrl.musica.artista">
                 </input>
 
                 <input
@@ -26,7 +26,7 @@
                     placeholder="Nome do álbum" 
                     type="text" 
                     ng-required="true"
-                    ng-model="cadastraMusica.musica.album">
+                    ng-model="musicaCtrl.musica.album">
                 </input>
 
                 <input
@@ -34,7 +34,7 @@
                     placeholder="Ano de lançamento" 
                     type="text" 
                     ng-required="true"
-                    ng-model="cadastraMusica.musica.ano">
+                    ng-model="musicaCtrl.musica.ano">
                 </input>
 
                 <input
@@ -42,13 +42,22 @@
                     placeholder="Duração" 
                     type="text" 
                     ng-required="true"
-                    ng-model="cadastraMusica.musica.duracao">
+                    ng-model="musicaCtrl.musica.duracao">
                 </input>
 
-                <button class="btn btn-primary form-control" type="submit">Adicionar música</button>
+                <button class="btn btn-primary form-control" type="button" ng-click="musicaCtrl.confirma()">Adicionar música</button>
+
+                <div ng-show="musicaCtrl.confirmacao()" class="alert alert-primary">
+                    Deseja adicionar esta música ao sistema?<br/>
+
+                    <button class="btn btn-primary" type="submit" ng-click="musicaCtrl.desconfirma()">Sim</button>
+                    <button class="btn btn-secondary" type="button" ng-click="musicaCtrl.desconfirma()">Não</button>
+                </div>
             </form>
 
-            <div class="alert alert-danger" ng-show="cadastraMusica.valida()">
+            
+
+            <div class="alert alert-danger" ng-show="musicaCtrl.valida()">
                 A música já existe no álbum.  
             </div>
         </div>
