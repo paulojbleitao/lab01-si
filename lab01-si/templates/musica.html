@@ -13,13 +13,12 @@
                     ng-model="musicaCtrl.musica.nome">
                 </input>
 
-                <input
-                    class="form-control" 
-                    placeholder="Nome do artista" 
-                    type="text" 
-                    ng-required="true"
-                    ng-model="musicaCtrl.musica.artista">
-                </input>
+                <select class="form-control"
+                        ng-required="true"
+                        ng-options="artista.nome for artista in musicaCtrl.artistas()"
+                        ng-model="musicaCtrl.musica.artista">
+                    <option value="" disabled selected>Artista</option>
+                </select>
 
                 <input
                     class="form-control" 

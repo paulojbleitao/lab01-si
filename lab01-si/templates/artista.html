@@ -21,11 +21,11 @@
                 </input>
                 
                 <button class="btn btn-primary form-control" type="submit">Cadastrar artista</button>
-            </form><br/>
+                <div class="alert alert-danger" ng-show="artistaCtrl.valida()">
+                    O artista já existe no sistema.    
+                </div>
+            </form>
 
-            <div class="alert alert-danger" ng-show="artistaCtrl.valida()">
-                O artista já existe no sistema.    
-            </div>
 
             <h3>Pesquisa de artista</h3>
             <form ng-submit="artistaCtrl.pesquisa()">

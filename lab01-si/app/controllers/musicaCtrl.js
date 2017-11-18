@@ -1,5 +1,6 @@
-app.controller('musicaCtrl', function(MusicaService) {
+app.controller('musicaCtrl', function(MusicaService, ArtistaService) {
     this.albuns = MusicaService.albuns;
+    let artistas = ArtistaService.artistas;
     let existe = false;
     let confirmacao = false;
 
@@ -26,6 +27,10 @@ app.controller('musicaCtrl', function(MusicaService) {
 
     this.confirmacao = () => {
         return confirmacao;
+    }
+
+    this.artistas = () => {
+        return artistas;
     }
 
 });
